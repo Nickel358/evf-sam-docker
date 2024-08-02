@@ -1,0 +1,19 @@
+services:
+  app:
+    build:
+      context: .
+    ports:
+      - 10001:10001
+    working_dir: /app/EVF-SAM
+    # Configuration for using GPU
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    # Configuration to avoid insufficient shared memory issue
+    ipc: host
+    # Prevent the container from shutting down if the default container command fails or exits
+    command: /bin/sh -c "while sleep 1000; do :; done"
