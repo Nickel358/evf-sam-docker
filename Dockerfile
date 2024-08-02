@@ -10,7 +10,6 @@ RUN git clone https://huggingface.co/YxZhang/evf-sam \
     && git clone https://github.com/hustvl/EVF-SAM.git
 
 
-# Select the PyTorch image based on the version of CUDA installed by the user
 FROM pytorch/pytorch:2.4.0-cuda11.8-cudnn9-runtime
 
 ARG DOWNLOAD="/download_tmp"
